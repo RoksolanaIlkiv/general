@@ -1,0 +1,64 @@
+<div class="general-alignment">
+  <div class="parent-container">
+    <h2>Parent component with Default change detection strategy</h2>
+
+    <div class="text-style">
+      <b>This data will display in parent component only:</b> {{ data() }}
+    </div>
+
+    <button (click)="onOnlyParentDataUpdate()">Update only parent data</button>
+
+    <div class="text-style"><b>Parent data:</b> {{ signalParentData() }}</div>
+
+    <button (click)="onParentDataUpdate()">Update parent data</button>
+    <button (click)="onParentDataChange()">Switch parent data</button>
+
+    <div class="general-alignment">
+      <app-child [data]="signalParentData()"></app-child>
+      <app-second-child [data]="signalParentData()"></app-second-child>
+    </div>
+  </div>
+  <div class="parent-container max-width">
+    <h2>Explanation</h2>
+    <h3>
+      Whenever change detection is triggered, we'll see a notification
+      explaining where the changes are happening.
+    </h3>
+    <hr />
+
+    With OnPush change detection method, the component will only be checked for
+    changes(In our case) if input reference changes or changes happening in
+    component itself.
+    <hr />
+
+    With Default change detection method, the component will be checked if any
+    changes happened in parent component as well.
+    <hr />
+
+    <ol>
+      <li>
+        If you click <b>'Update only parent data'</b>, changes are made in the
+        parent component only, but also triggers detection in a second child
+        component.
+      </li>
+      <li>
+        <b>'Update parent data'</b> will change parent data 1 time. It will
+        trigger changes in first child only ones, but each time for second
+        child.
+      </li>
+      <li>
+        <b>'Change parent data'</b> will change data each time. It will trigger
+        changes in both components.
+      </li>
+      <li>
+        When <b>'Update child data'</b> clicked in first child it will trigger
+        changes for parent and second child.
+      </li>
+      <li>
+        When <b>'Update child data'</b> clicked in second child it will trigger
+        changes for parent, but not for first child.
+      </li>
+    </ol>
+  </div>
+  <div>{{ checkTemplateUpdate() }}</div>
+</div>

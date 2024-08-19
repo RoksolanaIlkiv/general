@@ -1,0 +1,10 @@
+<div class="child-container">
+  <h2>Child component with OnPush change detection strategy</h2>
+
+  <div class="text-style"><b>Parent data:</b> {{ data() }}</div>
+  <div class="text-style"><b>Child data:</b> {{ childData() }}</div>
+
+  <button (click)="onChildDataUpdate()">Update child data</button>
+</div>
+
+<div>{{ checkTemplateUpdate() }}</div>

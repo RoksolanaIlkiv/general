@@ -1,0 +1,44 @@
+<div class="general-alignment">
+  <div class="parent-container general-alignment">
+    <div class="child-container">
+      <h3>Parent component</h3>
+      <p><b>Root service text: </b>{{ rootServiceText }}</p>
+      <p><b>Parent service text: </b>{{ parentServiceText }}</p>
+      <p><b>Child service text: </b>{{ childServiceText }}</p>
+    </div>
+
+    <app-injection-child></app-injection-child>
+  </div>
+
+  <div class="parent-container max-width margin-10">
+    <h2>Explanation</h2>
+
+    <h3>
+      Hierarchical dependency injection enables you to share dependencies
+      between different parts of the application only when and if you need to.
+      When it checks for available suppliers, it moves from the child up. So, if
+      the child component has no providers, it will use it from the closest
+      parental and only than from the root.
+    </h3>
+
+    <hr />
+    This behavior can be adjusted using resolution modifiers.
+    <hr />
+
+    <ol>
+      <li>
+        For <b>RootService</b> we create one instance of the service(singleton)
+        and use it. So it will be same in any part of our application.
+      </li>
+      <li>
+        For <b>ParentService</b>, the variable was written at the parent
+        component level. So will also be available to all children.
+      </li>
+      <li>
+        But for <b>ChildService</b> it provided in parent component and child
+        component. Since the component will use the closest available value, we
+        will see different results for the child and parent components.
+      </li>
+    </ol>
+  </div>
+</div>
